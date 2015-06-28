@@ -1,4 +1,5 @@
 call pathogen#infect()
+call pathogen#helptags()
 filetype plugin indent on
 syntax on
 filetype on
@@ -10,8 +11,7 @@ let mapleader = ","
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-let g:user_emmet_leader_key='<C-Z>'
-let g:auto_save = 1               " enable AutoSave on Vim startup
+let g:auto_save = 1
 let g:neocomplete#enable_at_startup = 1
 
 set encoding=utf-8
