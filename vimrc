@@ -13,6 +13,7 @@ let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 let g:auto_save = 1
 let g:neocomplete#enable_at_startup = 1
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 set encoding=utf-8
 set ruler
