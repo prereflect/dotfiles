@@ -31,6 +31,15 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set tabstop=2 shiftwidth=2
 
+nnoremap <leader>l :ls<CR>:b<space>
+
+" RSpec.vim mappings
+map <Leader>c :call RunCurrentSpecFile()<CR>
+map <Leader>n :call RunNearestSpec()<CR>
+map <Leader>b :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_runner = 'os_x_iterm2'
+
 let mapleader = ","
 let g:auto_save = 1
 let g:jsx_ext_required = 0
@@ -44,16 +53,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
-
-nnoremap <leader>l :ls<CR>:b<space>
-
-" RSpec.vim mappings
-map <Leader>c :call RunCurrentSpecFile()<CR>
-map <Leader>n :call RunNearestSpec()<CR>
-map <Leader>b :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-let g:rspec_runner = 'os_x_iterm2'
-
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
@@ -72,13 +71,15 @@ let g:lightline = {
       \ },
       \ }
 
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
+
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
+
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
+
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
@@ -108,6 +109,7 @@ function! s:my_cr_function()
   " For no inserting <CR> key.
   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
+
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -121,3 +123,4 @@ autocmd Filetype ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
