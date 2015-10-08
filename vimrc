@@ -4,46 +4,55 @@ filetype plugin indent on
 syntax on
 filetype on
 syntax enable
-
 colorscheme wombat
 
+set backspace=indent,eol,start
+set cursorline
+set encoding=utf-8
+set expandtab
+set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set ruler
+set list
+set listchars=""
+set listchars=tab:\ \
+set listchars+=trail:.
+set listchars+=extends:>
+set listchars+=precedes:<
+set nocompatible
+set number
+set nowrap
+set showcmd
+set smartcase
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+set tabstop=2 shiftwidth=2
+
 let mapleader = ","
+let g:auto_save = 1
+let g:jsx_ext_required = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-let g:auto_save = 1
-let g:neocomplete#enable_at_startup = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
-set encoding=utf-8
-set ruler
-set cursorline
-set hidden
-set number
-set nocompatible
-set encoding=utf-8
-set showcmd
-set nowrap
-set tabstop=2 shiftwidth=2
-set expandtab
-set backspace=indent,eol,start
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-"" List chars
-
-set list                          " Show invisible characters
-set listchars=""                  " Reset the listchars
-set listchars=tab:\ \             " a tab should display as "  ", trailin>
-set listchars+=trail:.            " show trailing spaces as dots
-set listchars+=extends:>          " The character to show in the last col>
-                                  " off and the line continues beyond the>
-set listchars+=precedes:<         " The character to show in the last col>
-                                  " off and the line continues beyond the>
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 nnoremap <leader>l :ls<CR>:b<space>
+
+" RSpec.vim mappings
+map <Leader>c :call RunCurrentSpecFile()<CR>
+map <Leader>n :call RunNearestSpec()<CR>
+map <Leader>b :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_runner = 'os_x_iterm2'
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -76,10 +85,10 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+      \ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -108,11 +117,10 @@ inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Enable omni completion.
+autocmd Filetype ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')

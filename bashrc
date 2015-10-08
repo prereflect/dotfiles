@@ -6,3 +6,4 @@ alias rstop='kill -INT $(cat tmp/pids/server.pid)'
 alias rrestart='rstop && rstart'
 
 alias myflix='cd ~/Doc*/code/rails/t*/tl-m*'
+. ~/.nvm/nvm.sh
