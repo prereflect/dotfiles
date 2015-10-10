@@ -31,6 +31,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set tabstop=2 shiftwidth=2
 
+let mapleader = ","
 nnoremap <leader>l :ls<CR>:b<space>
 
 " RSpec.vim mappings
@@ -40,7 +41,6 @@ map <Leader>b :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 let g:rspec_runner = 'os_x_iterm2'
 
-let mapleader = ","
 let g:auto_save = 1
 let g:jsx_ext_required = 0
 let g:neocomplete#enable_at_startup = 1
