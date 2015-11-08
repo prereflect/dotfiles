@@ -1,28 +1,49 @@
-call pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on
-syntax on
-filetype on
-syntax enable
-colorscheme wombat
+runtime macros/matchit.vim
 
-set backspace=indent,eol,start
-set cursorline
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'vim-ruby/vim-ruby'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise'
+Plug 'thoughtbot/vim-rspec'
+Plug 'scrooloose/syntastic'
+Plug 'itchyny/lightline.vim'
+Plug 'sheerun/vim-wombat-scheme'
+Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'pangloss/vim-javascript'
+Plug 'justinj/vim-react-snippets'
+Plug 'bbatsov/rubocop'
+Plug 'ngmy/vim-rubocop'
+call plug#end()
+
+colorscheme wombat
+let mapleader = "\<Space>"
+
 set encoding=utf-8
-set expandtab
-set hidden
-set hlsearch
-set ignorecase
-set incsearch
-set ruler
+set number
 set list
 set listchars=""
 set listchars=tab:\ \
 set listchars+=trail:.
 set listchars+=extends:>
 set listchars+=precedes:<
-set nocompatible
-set number
+set expandtab
+set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set ruler
 set nowrap
 set showcmd
 set smartcase
@@ -32,15 +53,21 @@ set statusline+=%*
 set tabstop=2 shiftwidth=2
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
-let mapleader = ","
-nnoremap <leader>l :ls<CR>:b<space>
+let mapleader = "\<Space>"
+
+" ctrlpvim/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Make CtrlP use ag for listing the files. Way faster and no useless files.
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 
 " RSpec.vim mappings
-map <Leader>c :call RunCurrentSpecFile()<CR>
-map <Leader>n :call RunNearestSpec()<CR>
-map <Leader>b :call RunLastSpec()<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-let g:rspec_runner = 'os_x_iterm2'
 
 let g:auto_save = 1
 let g:jsx_ext_required = 0
@@ -84,7 +111,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
       \ 'scheme' : $HOME.'/.gosh_completions'
       \ }
 if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
+  let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
@@ -105,14 +132,17 @@ inoremap <expr><C-y> neocomplete#close_popup()
 inoremap <expr><C-e> neocomplete#cancel_popup()
 
 let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-react-snippets'
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-react-snippets'
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " Enable omni completion.
 autocmd Filetype ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+nmap <leader>vr :sp $MYVIMRC<cr>
+nmap <leader>so :source $MYVIMRC<cr>
