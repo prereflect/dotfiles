@@ -29,6 +29,7 @@ call plug#end()
 
 colorscheme wombat
 let mapleader = "\<Space>"
+nnoremap <leader>li :ls<CR>:b<space>
 
 set encoding=utf-8
 set number
@@ -52,8 +53,6 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set tabstop=2 shiftwidth=2
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-
-let mapleader = "\<Space>"
 
 " ctrlpvim/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
