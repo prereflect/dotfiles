@@ -23,6 +23,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'pangloss/vim-javascript'
 Plug 'justinj/vim-react-snippets'
+Plug 'vim-scripts/vim-auto-save'
 Plug 'bbatsov/rubocop'
 Plug 'ngmy/vim-rubocop'
 call plug#end()
@@ -30,6 +31,7 @@ call plug#end()
 colorscheme wombat
 let mapleader = "\<Space>"
 nnoremap <leader>li :ls<CR>:b<space>
+let g:auto_save = 1
 
 set encoding=utf-8
 set number
