@@ -33,6 +33,7 @@ let mapleader = "\<Space>"
 nnoremap <leader>l :ls<CR>:b<space>
 let g:auto_save = 1
 
+set cul
 set encoding=utf-8
 set number
 set list
