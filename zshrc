@@ -64,7 +64,7 @@ plugins=(common-aliases bundler rbenv git rails vi-mode zsh-syntax-highlighting)
 # User configuration
 
 export PATH="/usr/local/var/rbenv/shims:/Users/prereflect/.nvm/versions/node/v0.12.7/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -78,7 +78,11 @@ export EDITOR='vim'
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/dsa_id"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+HELPDIR=/usr/local/share/zsh/help
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -88,3 +92,6 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+unalias run-help
+utoload run-help
