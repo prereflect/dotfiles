@@ -94,4 +94,4 @@ HELPDIR=/usr/local/share/zsh/help
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 unalias run-help
-utoload run-help
+autoload run-help
