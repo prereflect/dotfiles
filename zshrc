@@ -82,6 +82,8 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 HELPDIR=/usr/local/share/zsh/help
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
