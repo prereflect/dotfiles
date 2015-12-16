@@ -25,6 +25,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'justinj/vim-react-snippets'
 Plug 'bbatsov/rubocop'
 Plug 'ngmy/vim-rubocop'
+Plug 'itspriddle/vim-marked'
 call plug#end()
 
 colorscheme wombat
