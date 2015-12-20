@@ -59,7 +59,7 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
-plugins=(common-aliases bundler rbenv git rails vi-mode zsh-syntax-highlighting)
+plugins=(common-aliases rbenv git vi-mode zsh-syntax-highlighting)
 
 # User configuration
 
@@ -97,3 +97,7 @@ export NVM_DIR="$HOME/.nvm"
 
 unalias run-help
 autoload run-help
+alias be='bundle exec'
+alias rstart='be rails s -b 127.0.0.1 -d'
+alias rstop='be kill -INT $(cat tmp/pids/server.pid)'
+alias rrestart='rstop && rstart'
