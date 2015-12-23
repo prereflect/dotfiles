@@ -2,6 +2,8 @@ runtime macros/matchit.vim
 
 call plug#begin()
 Plug 'tpope/vim-sensible'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
 Plug 'vim-ruby/vim-ruby'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
@@ -56,6 +58,12 @@ set statusline+=%*
 set tabstop=2 shiftwidth=2
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
 " ctrlpvim/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -69,6 +77,9 @@ map <Leader>st :call RunCurrentSpecFile()<CR>
 map <Leader>ss :call RunNearestSpec()<CR>
 map <Leader>sl :call RunLastSpec()<CR>
 map <Leader>sa :call RunAllSpecs()<CR>
+
+" Vim Tmux Runner
+let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
 
 let g:auto_save = 1
 let g:jsx_ext_required = 0
