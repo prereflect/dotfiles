@@ -91,13 +91,4 @@ export NVM_DIR="$HOME/.nvm"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# unalias run-help
-# autoload run-help
 alias be='bundle exec'
-alias rstart='be rails s -b 127.0.0.1 -d'
-alias rstop='be kill -INT $(cat tmp/pids/server.pid)'
-alias rrestart='rstop && rstart'
