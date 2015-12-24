@@ -37,6 +37,7 @@ nnoremap <leader>l :ls<CR>:b<space>
 set cul
 set encoding=utf-8
 set number
+set relativenumber
 set list
 set listchars=""
 set listchars=tab:\ \
