@@ -33,7 +33,6 @@ call plug#end()
 
 colorscheme wombat
 let mapleader = "\<Space>"
-nnoremap <leader>l :ls<CR>:b<space>
 
 set cul
 set encoding=utf-8
@@ -75,13 +74,13 @@ let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 
 " RSpec.vim mappings
-map <Leader>st :call RunCurrentSpecFile()<CR>
-map <Leader>ss :call RunNearestSpec()<CR>
-map <Leader>sl :call RunLastSpec()<CR>
-map <Leader>sa :call RunAllSpecs()<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 " Vim Tmux Runner
-let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
+let g:rspec_command = "VtrSendCommandToRunner! be rspec {spec}"
 
 let g:auto_save = 1
 let g:jsx_ext_required = 0
